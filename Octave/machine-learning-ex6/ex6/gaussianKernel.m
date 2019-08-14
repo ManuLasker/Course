@@ -15,7 +15,9 @@ sim = 0;
 %               sigma
 %
 %
-
+%disp('size sigma');
+%disp(size(sigma));
+sim = e^(-norm(x1-x2)^2/(2*sigma^2));
 
 
 
