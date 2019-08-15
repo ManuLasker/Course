@@ -26,6 +26,20 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+for k = 1: K
+  % getting the ones with k
+  idx_temp = (idx == k);
+  
+  % getting the number of examples that are with k
+  number_temp = sum(idx_temp);
+  
+  % getting just the ones with k
+  X_temp = bsxfun(@times, X, idx_temp);
+  
+  % mean of the ones with k
+  centroids(k, [1:n]) = 1/number_temp * sum(X_temp); 
+  
+end
 
 
 
