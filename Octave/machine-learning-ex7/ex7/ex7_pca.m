@@ -19,7 +19,7 @@
 %
 
 %% Initialization
-clear ; close all; clc
+clear all; close all; clc
 
 %% ================== Part 1: Load Example Dataset  ===================
 %  We start this exercise by using a small dataset that is easily to
