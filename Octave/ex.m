@@ -15,6 +15,7 @@
 %plot(t,y1)
 
 %figure(2); 
+%figure(2); 
 %plot(t,y2)
 
 %subplot(1,2,1);
@@ -25,4 +26,3 @@
 
 A = magic(5);
 imagesc(A)
-clf;
