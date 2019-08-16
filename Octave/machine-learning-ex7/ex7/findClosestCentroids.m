@@ -22,18 +22,24 @@ idx = zeros(m, 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-overall_error = zeros(m,K);
-for i = 1: m 
-  for k = 1: K
+error = zeros(m,K);
+
+%for i = 1: m 
+  %for k = 1: K
     %calculate the error of each x^i sample with eace centroid
-    error = norm(X(i,:) - centroids(k,:))^2;
+    %error = norm(X(i,:) - centroids(k,:))^2;
     
     %save it in a matrix
-    overall_error(i, k) = error;
-  end 
+   % overall_error(i, k) = error;
+  %end 
+%end
+
+%vetorized method
+for k = 1: K
+  error(:,k) = norm(bsxfun(@minus, X, centroids(k,:)),"rows");
 end
 
-[min idx] = min(overall_error, [], 2);
+[min idx] = min(error, [], 2);
 
 
 
