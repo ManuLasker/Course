@@ -29,8 +29,12 @@ clear all; close all; clc
 fprintf('\nPreprocessing sample email (emailSample1.txt)\n');
 
 % Extract Features
-file_contents = readFile('emailSample1.txt');
-word_indices  = processEmail(file_contents);
+directory = './easy_ham/';
+
+% Extract Features
+%file_contents = readFile('emailSample1.txt');
+
+word_indices  = processEmail(directory);
 
 % Print Stats
 fprintf('Word Indices: \n');
