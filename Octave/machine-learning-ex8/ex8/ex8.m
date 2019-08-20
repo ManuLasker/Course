@@ -16,7 +16,7 @@
 %
 
 %% Initialization
-clear ; close all; clc
+clear all; close all; clc
 
 %% ================== Part 1: Load Example Dataset  ===================
 %  We start this exercise by using a small dataset that is easy to
@@ -34,7 +34,7 @@ fprintf('Visualizing example dataset for outlier detection.\n\n');
 load('ex8data1.mat');
 
 %  Visualize the example dataset
-plot(X(:, 1), X(:, 2), 'bx');
+plot(X(:, 1), X(:, 2), 'bx', 'MarkerSize', 3);
 axis([0 30 0 30]);
 xlabel('Latency (ms)');
 ylabel('Throughput (mb/s)');
