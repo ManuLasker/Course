@@ -9,11 +9,11 @@ function visualizeFit(X, mu, sigma2)
 Z = multivariateGaussian([X1(:) X2(:)],mu,sigma2);
 Z = reshape(Z,size(X1));
 
-plot(X(:, 1), X(:, 2),'bx');
+plot(X(:, 1), X(:, 2),'bx','MarkerSize' ,2, 'LineWidth', 1.5);
 hold on;
 % Do not plot if there are infinities
 if (sum(isinf(Z)) == 0)
-    contour(X1, X2, Z, 10.^(-20:3:0)');
+    contour(X1, X2, Z, 10.^(-20:1:0)','-', 'LineWidth',1.5);
 end
 hold off;
 

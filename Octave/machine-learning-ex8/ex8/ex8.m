@@ -26,7 +26,7 @@ clear all; close all; clc
 %  several machines: the latency and throughput of each machine.
 %  This exercise will help us find possibly faulty (or very fast) machines.
 %
-
+warning ("off");
 fprintf('Visualizing example dataset for outlier detection.\n\n');
 
 %  The following command loads the dataset. You should now have the
@@ -34,7 +34,7 @@ fprintf('Visualizing example dataset for outlier detection.\n\n');
 load('ex8data1.mat');
 
 %  Visualize the example dataset
-plot(X(:, 1), X(:, 2), 'bx', 'MarkerSize', 3);
+plot(X(:, 1), X(:, 2), 'bx', 'MarkerSize' ,2, 'LineWidth', 1.5);
 axis([0 30 0 30]);
 xlabel('Latency (ms)');
 ylabel('Throughput (mb/s)');
@@ -53,7 +53,7 @@ pause
 %
 fprintf('Visualizing Gaussian fit.\n\n');
 
-%  Estimate my and sigma2
+%  Estimate mu and sigma2
 [mu sigma2] = estimateGaussian(X);
 
 %  Returns the density of the multivariate normal at each data point (row) 
