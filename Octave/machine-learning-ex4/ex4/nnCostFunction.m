@@ -62,21 +62,50 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 
 y_temp = zeros(size(y,1),num_labels);
+I = eye(num_labels);
+
 %Recode y, in the form that if y were 1,2,..10 for the purpose of the training a neural
 %network, we need the labes as vectors containing only values 0 or 1 so that
 % y=[0 0 1] that means the number was 3.
-for i=1:num_labels
-  pos = find(y==i);
-  y_temp(pos, i) = 1;
-end
+y_temp = I(:,y)';
 
+%calculate the hypoteshis
+%save a1 without the ones in the column
+temp_a1 = X;
+a1 = [ones(size(X),1) temp_a1];
+z2 = a1*Theta1';
+
+%save a2 without the ones in the firs column
+temp_a2 = sigmoid(z2);
+a2 =[ones(size(z2),1) temp_a2];
+z3 = a2*Theta2';
+a3 = sigmoid(z3);
+
+%Backward propagation calculate the deltas
+d3 = a3 - y_temp;
+
+%save theta2 without the bias column
+temp_Theta2 = Theta2;
+temp_Theta2(:,1) = [];
+
+%calculate the second deltas
+d2 = (d3*temp_Theta2).*temp_a2.*(1-temp_a2);
+
+%computing gradients
+Theta2_grad = Theta2_grad + d3'*a2;
+Theta1_grad = Theta1_grad + d2'*a1;
+
+%Here calculate the cost function without regularization
+J = sum(sum(-y_temp.*log(a3)-(1-y_temp).*log(1-a3)));
+
+#{
 for i=1:m
   %calculate the hypoteshis for each sample
   
   %save a1 without the ones in the column
   temp_a1 = X(i,:);
   a1 = [ones(size(X(i,:)),1) temp_a1];
-  z2 = a1*Theta1';
+  z2 = a1*Theta1' ;
   
   %save a2 without the ones in the firs column
   temp_a2 = sigmoid(z2);
@@ -111,6 +140,7 @@ for i=1:m
   %Here calculate the cost function without regularization
   J = J + sum(-y_temp(i,:).*log(a3)-(1-y_temp(i,:)).*log(1-a3));
 endfor
+#}
 %whitout regularization
 Theta1_grad = 1/m * Theta1_grad;
 Theta2_grad = 1/m * Theta2_grad;
