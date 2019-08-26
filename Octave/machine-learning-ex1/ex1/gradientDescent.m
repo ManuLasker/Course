@@ -20,8 +20,7 @@ for iter = 1:num_iters
     drivativeJ_respect_theta = X'*rest;
     theta = theta - alpha * 1/m * drivativeJ_respect_theta;
 
-
-
+    
     % ============================================================
 
     % Save the cost J in every iteration    

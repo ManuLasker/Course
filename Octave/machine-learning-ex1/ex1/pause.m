@@ -1,1 +1,0 @@
-function pause  while true    disp('Paused, press enter');    str = input('','s');     switch str       case '' % (return key)         break;      otherwise    end  endend
